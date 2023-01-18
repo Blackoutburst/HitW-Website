@@ -2,9 +2,6 @@ import HypixelStats from "@/components/HypixelStats"
 import PlayerRender from "@/components/PlayerRender"
 import PracticeStats from "@/components/PracticeStats"
 
-import axios from "axios"
-import fs from 'fs'
-
 export default async function User({params}) {
     const user = await getUser(params.uuid)
     if (user)
@@ -32,13 +29,3 @@ async function getUser(uuid) {
   
     return user
 }
-
-async function downloadFile (url, file) {
-    axios({
-        method: "get",
-        url,
-        responseType: "stream"
-    }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(`${process.cwd()}/public/heads/${file}`));
-    })
-  }
