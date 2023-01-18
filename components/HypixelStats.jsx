@@ -26,7 +26,7 @@ const HypixelStats = ({user}) => {
                 <p className='font-coda text-xl text-amber-400'>{`(#${user?.hypixel.positions.total})`}</p>
             </div>
             <div className="flex justify-between">
-                <p className='font-coda text-xl text-orange-400'>{`Total score (API): ${formatNumber(user?.hypixel.stats.totalapi)} ${user?.hypixel.stats.totalapi > user?.hypixel.stats.total && '(Glitched)'}`}</p>
+                <p className='font-coda text-xl text-orange-400'>{`Total score (API): ${formatNumber(user?.hypixel.stats.totalapi)} ${user?.hypixel.stats.totalapi > user?.hypixel.stats.total ? '(Glitched)' : ''}`}</p>
                 <p className='font-coda text-xl text-amber-400'>{`(#${user?.hypixel.positions.totalapi})`}</p>
             </div>
             <div className="flex justify-between">
