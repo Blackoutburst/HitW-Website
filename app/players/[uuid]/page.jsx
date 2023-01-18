@@ -39,6 +39,6 @@ async function downloadFile (url, file) {
         url,
         responseType: "stream"
     }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(`/heads/${file}`));
+        response.data.pipe(fs.createWriteStream(`${process.cwd()}/heads/${file}`));
     })
   }
