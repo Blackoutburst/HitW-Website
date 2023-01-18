@@ -4,7 +4,7 @@ import Link from "next/link"
 const Navbar = () => {
 
     return (
-        <div className='fixed flex items-center top-0 w-screen h-20 bg-[#313131] shadow-lg z-50 space-x-20'>
+        <div className='fixed flex items-center top-0 w-screen h-20 bg-[#313131] shadow-lg z-40 space-x-20'>
             <Link href={'/'}>
                 <div className='cursor-pointer h-16 w-16 relative m-2'>
                     <Image
@@ -20,7 +20,7 @@ const Navbar = () => {
                     <span>Players</span>
                 </div>
             </Link>
-            <Link href={'/'}>
+            <Link href={'/leaderboards'}>
                 <div className="navbar-link">
                     <span>Leaderboards</span>
                 </div>

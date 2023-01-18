@@ -10,7 +10,7 @@
 /coverage
 
 # data
-/heads
+public/heads
 
 # next.js
 /.next/

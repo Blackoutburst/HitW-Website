@@ -34,8 +34,8 @@ async function getUser(uuid) {
 }
 
 async function downloadFile (url, file) {
-    if (!fs.existsSync('./heads')){
-        fs.mkdirSync('./heads');
+    if (!fs.existsSync('./public/heads')){
+        fs.mkdirSync('./public/heads');
     }
 
     axios({
@@ -43,6 +43,6 @@ async function downloadFile (url, file) {
         url,
         responseType: "stream"
     }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(`./heads/${file}`));
+        response.data.pipe(fs.createWriteStream(`./public/heads/${file}`));
     })
   }
