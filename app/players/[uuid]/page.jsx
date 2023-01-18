@@ -34,15 +34,11 @@ async function getUser(uuid) {
 }
 
 async function downloadFile (url, file) {
-    if (!fs.existsSync('./public/heads')){
-        fs.mkdirSync('./public/heads');
-    }
-
     axios({
         method: "get",
         url,
         responseType: "stream"
     }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(`./public/heads/${file}`));
+        response.data.pipe(fs.createWriteStream(`/public/heads/${file}`));
     })
   }
