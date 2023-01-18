@@ -92,7 +92,7 @@ const Leaderboard = ({ leaderboards }) => {
     return (
         <>
             {modal &&
-                <div className="z-50 top-0 left-0 absolute w-screen h-screen backdrop-blur-md flex justify-center items-center ">
+                <div className="z-50 top-0 left-0 fixed w-screen h-screen backdrop-blur-md flex justify-center items-center ">
                     <div className="flex justify-center items-center flex-wrap max-w-max rounded-lg shadow-lg bg-[#202020] border border-[#404040] w-3/4 h-3/4 p-10 gap-10">
                         {lbs.map(({lb, name, color} = lb) => (
                             <div 
