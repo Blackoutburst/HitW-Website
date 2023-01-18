@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 const Navbar = () => {
+
     return (
         <div className='fixed flex items-center top-0 w-screen h-20 bg-[#313131] shadow-lg z-50 space-x-20'>
             <Link href={'/'}>
@@ -14,7 +15,7 @@ const Navbar = () => {
                     />
                 </div>
             </Link>
-            <Link href={'/'}>
+            <Link href={'/players'}>
                 <div className="navbar-link">
                     <span>Players</span>
                 </div>
@@ -24,7 +25,7 @@ const Navbar = () => {
                     <span>Leaderboards</span>
                 </div>
             </Link>
-            <Link href={'/'}>
+            <Link href={'https://www.blackoutburst.com/test.html'}>
                 <div className="navbar-link">
                     <span>2D HitW</span>
                 </div>

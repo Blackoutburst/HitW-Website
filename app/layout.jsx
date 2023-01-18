@@ -5,7 +5,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head />
-        <body className='bg-[#525252] w-screen h-screen'>
+        <body className='bg-[#525252] w-screen'>
             <Navbar />
             <div className='w-full h-full mt-20'>
                 {children}
