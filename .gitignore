@@ -9,8 +9,6 @@
 # testing
 /coverage
 
-# data
-public/heads
 
 # next.js
 /.next/
