@@ -1,6 +1,6 @@
 export const colorFromClub = (club) => {
     switch (club) {
-        case 50: return 'from-[#dfff80] to-#beff00]'
+        case 50: return 'from-[#dfff80] to-[#beff00]'
         case 100: return 'from-[#ffe580] to-[#ffca00]'
         case 150: return 'from-[#f2be90] to-[#e67e22]'
         case 200: return 'from-[#ff8080] to-[#ff0000]'
