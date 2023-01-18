@@ -1,5 +1,5 @@
 import HypixelStats from "@/components/HypixelStats"
-import PlayerRender from "@/components/Playerrender"
+import PlayerRender from "@/components/PlayerRender"
 import PracticeStats from "@/components/PracticeStats"
 
 export default async function User({params}) {
