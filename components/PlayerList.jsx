@@ -36,7 +36,7 @@ const PlayerList = ({ users }) => {
                     />
                 </div>
             </div>
-            <div className="flex flex-row flex-wrap max-w-screen justify-evenly gap-10 mx-20">
+            <div className="flex flex-row flex-wrap max-w-screen justify-evenly gap-10 mx-20 mb-20">
                 {users?.filter(user => user.name.includes(filter)).map(user => (
                     <Link prefetch={false} href={`/players/${user.uuid}`}>
                         <div className="hover:scale-105 duration-200 bg-[#404040] p-4 rounded-lg shadow-lg border border-[#606060]">
