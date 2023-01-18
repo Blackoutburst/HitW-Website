@@ -3,7 +3,7 @@ import { formatNumber } from "../libs/number"
 const HypixelStats = ({user}) => {
 
     return (
-        <div className="flex flex-col w-fit space-y-3 w-64">
+        <div className="flex flex-col w-fit space-y-3 w-72">
             <p className='font-coda text-3xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 text-center mb-2'>Hypixel</p>
             <div className="flex justify-between">
                 <p className='font-coda text-xl text-orange-400'>{`Wins: ${formatNumber(user?.hypixel.stats.wins)}`}</p>

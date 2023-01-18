@@ -3,7 +3,7 @@ import { formatNumber } from "../libs/number"
 const PracticeStats = ({user}) => {
 
     return (
-        <div className="flex flex-col w-fit space-y-3 w-64">
+        <div className="flex flex-col w-fit space-y-3 w-72">
             <p className='font-coda text-3xl text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400 text-center'>Practice</p>
             <div className="flex justify-between">
                 <p className='font-coda text-xl text-lime-400'>{`Qualification: ${formatNumber(user?.practice.stats.qualification)}`}</p>
