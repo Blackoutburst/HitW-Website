@@ -2,8 +2,13 @@ import HypixelStats from "@/components/HypixelStats"
 import PlayerRender from "@/components/PlayerRender"
 import PracticeStats from "@/components/PracticeStats"
 
+import axios from "axios"
+import fs from 'fs'
+
 export default async function User({params}) {
     const user = await getUser(params.uuid)
+    if (user)
+        downloadFile(`https://visage.surgeplay.com/face/64/${user.uuid}`, `${user.uuid}.png`)
 
     return (
         <div>
@@ -27,3 +32,17 @@ async function getUser(uuid) {
   
     return user
 }
+
+async function downloadFile (url, file) {
+    if (!fs.existsSync('./heads')){
+        fs.mkdirSync('./heads');
+    }
+
+    axios({
+        method: "get",
+        url,
+        responseType: "stream"
+    }).then(function (response) {
+        response.data.pipe(fs.createWriteStream(`./heads/${file}`));
+    })
+  }

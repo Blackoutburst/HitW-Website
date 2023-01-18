@@ -38,7 +38,7 @@ const PlayerList = ({ users }) => {
             </div>
             <div className="flex flex-row flex-wrap max-w-screen justify-evenly gap-10 mx-20 mb-20">
                 {users?.filter(user => user.name.includes(filter)).map(user => (
-                    <Link prefetch={false} href={`/players/${user.uuid}`}>
+                    <Link key={user.uuid} prefetch={false} href={`/players/${user.uuid}`}>
                         <div className="hover:scale-105 duration-200 bg-[#404040] p-4 rounded-lg shadow-lg border border-[#606060]">
                             <p className={`font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
                         </div>
