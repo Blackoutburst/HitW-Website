@@ -1,5 +1,20 @@
-export default function Test() {
+import PlayerList from "@/components/PlayerList"
+
+export default async function Player() {
+    const users = await getUsers()
+
     return (
-        <p className="text-3xl">test</p>
+        <PlayerList users={users} />
     )
+}
+
+async function getUsers() {
+    let users
+    
+    try {
+        const data = await fetch(`http://185.171.202.24:20920/users?token=${process.env.TOKEN}`)
+        users = await data.json()
+    } catch {}
+  
+    return users?.users
 }
