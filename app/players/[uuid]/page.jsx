@@ -4,8 +4,6 @@ import PracticeStats from "@/components/PracticeStats"
 
 export default async function User({params}) {
     const user = await getUser(params.uuid)
-    if (user)
-        downloadFile(`https://visage.surgeplay.com/face/64/${user.uuid}`, `${user.uuid}.png`)
 
     return (
         <div>
