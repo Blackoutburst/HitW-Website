@@ -1,15 +1,28 @@
 'use client'
 
-import Link from "next/link"
-import { useState } from "react"
-import { colorFromClub } from "../libs/color"
-import PlayerHead from "./PlayerHead"
-import { formatNumber } from "@/libs/number"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
+import LeaderboardList from "./LeaderboardList"
+
+const MemoLB = React.memo(LeaderboardList)
 
 const Leaderboard = ({ leaderboards }) => {
 
     const [lb, setLb] = useState({lb: leaderboards.hypixelwins, name: "Hypixel Wins", color: 'text-yellow-500'})
     const [modal, setModal] = useState(false)
+
+    const escFunction = useCallback((event) => {
+        if (event.key === "Escape") {
+            setModal(false)
+        }
+    }, [])
+    
+    useEffect(() => {
+        document.addEventListener("keydown", escFunction, false);
+    
+        return () => {
+            document.removeEventListener("keydown", escFunction, false);
+        }
+    }, [])
 
     const lbs = [
         {
@@ -89,13 +102,18 @@ const Leaderboard = ({ leaderboards }) => {
         },
     ]
 
+    const value = useMemo(() => ({ lb }), [])
+
     return (
         <>
             {modal &&
-                <div className="z-50 top-0 left-0 fixed w-screen h-screen backdrop-blur-md flex justify-center items-center ">
-                    <div className="flex justify-center items-center flex-wrap max-w-max rounded-lg shadow-lg bg-[#202020] border border-[#404040] w-3/4 h-3/4 p-10 gap-10">
+                <>
+                    <div onClick={() => {setModal(false)}} className="z-50 top-0 left-0 fixed w-screen h-screen backdrop-blur-md flex justify-center items-center "/>
+                    <div className="z-[60] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] fixed flex justify-center items-center flex-wrap max-w-max rounded-lg shadow-lg bg-[#202020] border border-[#404040] w-3/4 h-3/4 p-10 gap-10">
+                        <img onClick={() => {setModal(false)}} className="cursor-pointer absolute top-2 right-2 w-6 h-6 duration-500 hover:rotate-180 invert opacity-40" src={'/images/cross.png'} />
                         {lbs.map(({lb, name, color} = lb) => (
                             <div 
+                                key={name}
                                 className="cursor-pointer hover:scale-105 duration-200 bg-[#404040] w-fit h-fit p-4 rounded-lg shadow-lg border border-[#606060]"
                                 onClick={() => {setLb({lb, name, color}), setModal(false)}}
                             >
@@ -103,7 +121,7 @@ const Leaderboard = ({ leaderboards }) => {
                             </div>
                         ))}
                     </div>
-                </div>
+                </>
             }
             <div className='h-24'>
                 <div 
@@ -115,22 +133,7 @@ const Leaderboard = ({ leaderboards }) => {
                         (Click to change)</p>
                 </div>
             </div>
-            <div className="flex flex-col flex-wrap max-w-screen mx-20 mb-20">
-                {lb.lb?.filter(user => user.uuid !== 'unknown').map((user, index) => (
-                    <Link key={user.uuid} prefetch={false} href={`/players/${user.uuid}`}>
-                        <div className={`w-full p-4 shadow-lg ${index == 0 ? "rounded-t-lg border-t border-x" : index == lb.lb?.filter(user => user.uuid !== 'unknown').length-1 ? "rounded-b-lg border-b border-x" : 'border-x' } ${index % 2 == 0 ? "bg-[#404040] border-[#606060]" : "bg-[#303030] border-[#505050]"}`}>
-                            <div className="flex w-full items-center justify-between">
-                                <div className="flex items-center space-x-10">
-                                    <p className={`w-14 font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`#${index + 1}`}</p>
-                                    <PlayerHead uuid={user.uuid} />
-                                    <p className={`font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
-                                </div>
-                                <p className={`font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`${formatNumber(user.point)}`}</p>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </div>
+            <MemoLB lb={lb} />
         </>
     )
 }

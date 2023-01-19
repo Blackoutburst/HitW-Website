@@ -14,6 +14,7 @@ const PlayerHead = ({ uuid }) => {
             height={40}
             src={!error ? `/heads/${uuid}.png` : '/images/missing_head.png'}
             onError={() => setError(true)}
+            alt={"Player head"}
         />
         </div>
     )

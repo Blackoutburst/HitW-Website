@@ -7,10 +7,9 @@ const Navbar = () => {
         <div className='fixed flex items-center top-0 w-screen h-20 bg-[#313131] shadow-lg z-40 space-x-20'>
             <Link href={'/'}>
                 <div className='cursor-pointer h-16 w-16 relative m-2'>
-                    <Image
+                    <img
                         className="rounded-full"
                         src='/images/favicon.png'
-                        layout='fill'
                         alt='home'
                     />
                 </div>
