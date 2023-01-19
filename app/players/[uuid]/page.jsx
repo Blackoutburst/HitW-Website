@@ -21,7 +21,7 @@ async function getUser(uuid) {
     let user
     
     try {
-        const data = await fetch(`http://185.171.202.24:20920/user?token=${process.env.TOKEN}&uuid=${uuid}`)
+        const data = await fetch(`${process.env.HOST}user?token=${process.env.TOKEN}&uuid=${uuid}`)
         user = await data.json()
     } catch {}
   

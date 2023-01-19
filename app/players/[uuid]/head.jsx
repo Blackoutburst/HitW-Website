@@ -11,7 +11,7 @@ export default async function Head({params}) {
 }
 
 async function getUser(uuid) {
-    const data = await fetch(`http://185.171.202.24:20920/user?token=${process.env.TOKEN}&uuid=${uuid}`)
+    const data = await fetch(`${process.env.HOST}user?token=${process.env.TOKEN}&uuid=${uuid}`)
     let user
     
     try {

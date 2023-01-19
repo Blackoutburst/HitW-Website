@@ -12,7 +12,7 @@ async function getUsers() {
     let users
     
     try {
-        const data = await fetch(`http://185.171.202.24:20920/users?token=${process.env.TOKEN}`)
+        const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
         users = await data.json()
     } catch {}
   

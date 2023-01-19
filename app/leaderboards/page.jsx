@@ -12,7 +12,7 @@ async function getLeaderboards() {
     let lbs
     
     try {
-        const data = await fetch(`http://185.171.202.24:20920/leaderboards?token=${process.env.TOKEN}`)
+        const data = await fetch(`${process.env.HOST}leaderboards?token=${process.env.TOKEN}`)
         lbs = await data.json()
     } catch {}
   
