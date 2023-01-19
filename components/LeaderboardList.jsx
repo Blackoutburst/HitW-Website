@@ -17,11 +17,11 @@ const LeaderboardList = ({ lb }) => {
                     <div className={`w-full p-4 shadow-lg ${index == 0 ? "lg:rounded-t-lg border-t lg:border-x" : index == lb.lb?.filter(user => user.uuid !== 'unknown').length-1 ? "lg:rounded-b-lg border-b lg:border-x" : 'lg:border-x' } ${index % 2 == 0 ? "bg-[#404040] border-[#606060]" : "bg-[#303030] border-[#505050]"}`}>
                         <div className="flex w-full items-center justify-between">
                             <div className="flex items-center lg:space-x-10">
-                                <p className={`w-14 font-coda lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`#${index + 1}`}</p>
+                                <p className={`w-14 lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`#${index + 1}`}</p>
                                 <MemoHead uuid={user.uuid} />
-                                <p className={`font-coda lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
+                                <p className={`lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
                             </div>
-                            <p className={`font-coda lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`${formatNumber(user.point)}`}</p>
+                            <p className={`lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`${formatNumber(user.point)}`}</p>
                         </div>
                     </div>
                 </Link>

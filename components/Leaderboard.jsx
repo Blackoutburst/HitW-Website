@@ -122,10 +122,10 @@ const Leaderboard = ({ leaderboards }) => {
                         {lbs.map(({lb, name, color} = lb) => (
                             <div 
                                 key={name}
-                                className="cursor-pointer lg:hover:scale-105 duration-200 bg-[#404040] w-fit h-fit p-3 lg:p-4 rounded-lg shadow-lg border border-[#606060]"
+                                className="data-button"
                                 onClick={() => {setLb({lb, name, color}), setModal(false)}}
                             >
-                                <p className={`font-coda lg:text-xl ${color}`}>{name}</p>
+                                <p className={`lg:text-xl ${color}`}>{name}</p>
                             </div>
                         ))}
                     </div>
@@ -136,8 +136,8 @@ const Leaderboard = ({ leaderboards }) => {
                     className={`cursor-pointer backdrop-blur-sm z-40 fixed flex justify-center items-center flex-col w-full bg-[#202020aa] duration-200 border-[#404040] h-16 lg:h-20 ${scrollY !== 0 && 'border-b-2 shadow-lg'}`}
                     onClick={() => setModal(true)}
                 >
-                    <p className={`duration-200 font-coda text-xl lg:text-3xl ${lb.color}`}>{lb.name}</p>
-                    <p className='duration-200 font-coda text-sm lg:text-lg text-white'>
+                    <p className={`duration-200 text-xl lg:text-3xl ${lb.color}`}>{lb.name}</p>
+                    <p className='duration-200 text-sm lg:text-lg text-white'>
                         (Click to change)</p>
                 </div>
             </div>
