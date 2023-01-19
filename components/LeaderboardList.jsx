@@ -4,6 +4,9 @@ import Link from "next/link"
 import { colorFromClub } from "../libs/color"
 import PlayerHead from "./PlayerHead"
 import { formatNumber } from "@/libs/number"
+import React from "react"
+
+const MemoHead = React.memo(PlayerHead)
 
 const LeaderboardList = ({ lb }) => {
 
@@ -15,7 +18,7 @@ const LeaderboardList = ({ lb }) => {
                         <div className="flex w-full items-center justify-between">
                             <div className="flex items-center space-x-10">
                                 <p className={`w-14 font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`#${index + 1}`}</p>
-                                <PlayerHead uuid={user.uuid} />
+                                <MemoHead uuid={user.uuid} />
                                 <p className={`font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
                             </div>
                             <p className={`font-coda text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`${formatNumber(user.point)}`}</p>

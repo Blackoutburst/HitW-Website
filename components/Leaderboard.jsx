@@ -102,14 +102,12 @@ const Leaderboard = ({ leaderboards }) => {
         },
     ]
 
-    const value = useMemo(() => ({ lb }), [])
-
     return (
         <>
             {modal &&
                 <>
                     <div onClick={() => {setModal(false)}} className="z-50 top-0 left-0 fixed w-screen h-screen backdrop-blur-md flex justify-center items-center "/>
-                    <div className="z-[60] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] fixed flex justify-center items-center flex-wrap max-w-max rounded-lg shadow-lg bg-[#202020] border border-[#404040] w-3/4 h-3/4 p-10 gap-10">
+                    <div className="z-[60] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] fixed flex justify-center items-center flex-wrap max-w-max rounded-lg shadow-lg bg-[#202020] border border-[#404040] w-3/4 h-3/4 p-10 gap-10 overflow-y-auto">
                         <img onClick={() => {setModal(false)}} className="cursor-pointer absolute top-2 right-2 w-6 h-6 duration-500 hover:rotate-180 invert opacity-40" src={'/images/cross.png'} />
                         {lbs.map(({lb, name, color} = lb) => (
                             <div 
