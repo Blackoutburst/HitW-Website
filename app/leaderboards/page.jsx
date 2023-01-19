@@ -1,6 +1,4 @@
 import Leaderboard from "@/components/Leaderboard"
-import axios from "axios"
-import fs from 'fs'
 
 export default async function Player() {
     const leaderboards = await getLeaderboards()
@@ -21,12 +19,12 @@ async function getLeaderboards() {
     return lbs
 }
 
-async function downloadFile (url, file) {
-    axios({
-        method: "get",
-        url,
-        responseType: "stream"
-    }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(`./public/heads/${file}`));
-    })
-  }
+// async function downloadFile (url, file) {
+//     axios({
+//         method: "get",
+//         url,
+//         responseType: "stream"
+//     }).then(function (response) {
+//         response.data.pipe(fs.createWriteStream(`./public/heads/${file}`));
+//     })
+// }
