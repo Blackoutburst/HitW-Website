@@ -14,7 +14,7 @@
 }
 
 .navbar-link {
-    @apply flex items-center font-coda duration-200 h-full text-xl h-20 text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500
+    @apply flex items-center font-coda duration-200 h-full text-base lg:text-xl h-20 text-white lg:hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500
 }
 
 @tailwind base;

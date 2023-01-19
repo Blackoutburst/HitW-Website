@@ -9,6 +9,7 @@ const Leaderboard = ({ leaderboards }) => {
 
     const [lb, setLb] = useState({lb: leaderboards.hypixelwins, name: "Hypixel Wins", color: 'text-yellow-500'})
     const [modal, setModal] = useState(false)
+    const [scrollY, setScrollY] = useState(0)
 
     const escFunction = useCallback((event) => {
         if (event.key === "Escape") {
@@ -17,10 +18,19 @@ const Leaderboard = ({ leaderboards }) => {
     }, [])
     
     useEffect(() => {
-        document.addEventListener("keydown", escFunction, false);
-    
-        return () => {
-            document.removeEventListener("keydown", escFunction, false);
+        if (typeof window !== 'undefined') {
+            const handleScroll = () => {
+                setScrollY(window.pageYOffset)
+            }
+            
+            handleScroll()
+            window.addEventListener("scroll", handleScroll)
+            
+            document.addEventListener("keydown", escFunction, false);
+            return () => {
+                window.removeEventListener("scroll", handleScroll)
+                document.removeEventListener("keydown", escFunction, false);
+            }
         }
     }, [])
 
@@ -107,15 +117,15 @@ const Leaderboard = ({ leaderboards }) => {
             {modal &&
                 <>
                     <div onClick={() => {setModal(false)}} className="z-50 top-0 left-0 fixed w-screen h-screen backdrop-blur-md flex justify-center items-center "/>
-                    <div className="z-[60] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] fixed flex justify-center items-center flex-wrap max-w-max rounded-lg shadow-lg bg-[#202020] border border-[#404040] w-3/4 h-3/4 p-10 gap-10 overflow-y-auto">
-                        <img onClick={() => {setModal(false)}} className="cursor-pointer absolute top-2 right-2 w-6 h-6 duration-500 hover:rotate-180 invert opacity-40" src={'/images/cross.png'} />
+                    <div className="z-[60] lg:top-[50%] lg:left-[50%] lg:-translate-x-[50%] lg:-translate-y-[50%] fixed flex justify-center items-center flex-wrap max-w-max lg:rounded-lg lg:shadow-lg bg-[#202020] lg:border border-[#404040] w-full h-full lg:w-3/4 lg:h-3/4 p-5 gap-5 lg:p-10 lg:gap-10 overflow-y-auto">
+                        <img onClick={() => {setModal(false)}} className="cursor-pointer fixed top-2 right-2 w-8 h-8 lg:w-6 lg:h-6 duration-500 lg:hover:rotate-180 invert opacity-40" src={'/images/cross.png'} />
                         {lbs.map(({lb, name, color} = lb) => (
                             <div 
                                 key={name}
-                                className="cursor-pointer hover:scale-105 duration-200 bg-[#404040] w-fit h-fit p-4 rounded-lg shadow-lg border border-[#606060]"
+                                className="cursor-pointer lg:hover:scale-105 duration-200 bg-[#404040] w-fit h-fit p-3 lg:p-4 rounded-lg shadow-lg border border-[#606060]"
                                 onClick={() => {setLb({lb, name, color}), setModal(false)}}
                             >
-                                <p className={`font-coda text-xl ${color}`}>{name}</p>
+                                <p className={`font-coda lg:text-xl ${color}`}>{name}</p>
                             </div>
                         ))}
                     </div>
@@ -123,11 +133,11 @@ const Leaderboard = ({ leaderboards }) => {
             }
             <div className='h-24'>
                 <div 
-                    className='cursor-pointer backdrop-blur-sm z-40 fixed flex justify-center items-center flex-col w-full bg-[#202020aa] duration-200 border-[#404040] border-b-2 shadow-lg h-20'
+                    className={`cursor-pointer backdrop-blur-sm z-40 fixed flex justify-center items-center flex-col w-full bg-[#202020aa] duration-200 border-[#404040] h-16 lg:h-20 ${scrollY !== 0 && 'border-b-2 shadow-lg'}`}
                     onClick={() => setModal(true)}
                 >
-                    <p className={`duration-200 font-coda text-3xl ${lb.color}`}>{lb.name}</p>
-                    <p className='duration-200 font-coda text-lg text-white'>
+                    <p className={`duration-200 font-coda text-xl lg:text-3xl ${lb.color}`}>{lb.name}</p>
+                    <p className='duration-200 font-coda text-sm lg:text-lg text-white'>
                         (Click to change)</p>
                 </div>
             </div>

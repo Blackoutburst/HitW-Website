@@ -7,8 +7,8 @@ export default async function User({params}) {
 
     return (
         <div>
-            <p className="text-4xl text-white font-coda mt-32 text-center">Stats</p>
-            <div className="flex flex-row flex-wrap max-w-screen mx-20 justify-evenly mt-20 gap-10">
+            <p className="text-3xl lg:text-4xl text-white font-coda mt-10 lg:mt-32 text-center">Stats</p>
+            <div className="flex flex-row flex-wrap max-w-screen mx-10 lg:mx-20 justify-evenly mt-10 lg:mt-20 gap-10 lg:mb-0 mb-24">
                 <PlayerRender user={user} />
                 <HypixelStats user={user} />
                 <PracticeStats user={user} />
