@@ -10,12 +10,12 @@ const PlayerListLoader = () => {
 
 export default PlayerListLoader
 
-async function getUsers() {
+function getUsers() {
     let users
     
     try {
-        const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
-        users = await data.json()
+        const data = fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
+        users = data.json()
     } catch {}
   
     return users?.users
