@@ -16,6 +16,8 @@
 @layer base {
     html {
         @apply font-coda;
+        background: url("../public/images/background.png") no-repeat center fixed;     
+        background-size: cover;
     }
 }
 
@@ -35,7 +37,7 @@
 }
 
 .container::-webkit-scrollbar-track {
-    background: transparent;
+    background: #202020;
 }
 
 .container::-webkit-scrollbar-thumb {

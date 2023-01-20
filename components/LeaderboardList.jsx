@@ -38,8 +38,8 @@ const LeaderboardList = ({ lb, headerHeight }) => {
 
     const renderRow = ({ index, key, style }) => {
         return (
-            <div style={style}>
-                <Link key={key} prefetch={false} href={`/players/${list[index].uuid}`}>
+            <div style={style} key={key}>
+                <Link prefetch={false} href={`/players/${list[index].uuid}`}>
                     <div className={`w-full p-4 shadow-lg ${index % 2 == 0 ? "bg-[#404040]" : "bg-[#303030]"}`}>
                         <div className="flex w-full items-center justify-between">
                             <div className="flex items-center lg:space-x-10">
