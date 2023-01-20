@@ -7,8 +7,6 @@ import { formatNumber } from "@/libs/number"
 import React, { useEffect, useState } from "react"
 import { List } from "react-virtualized"
 
-const MemoHead = React.memo(PlayerHead)
-
 const LeaderboardList = ({ lb, headerHeight }) => {
 
     const list = lb.lb?.filter(user => user.uuid !== 'unknown')
@@ -46,7 +44,7 @@ const LeaderboardList = ({ lb, headerHeight }) => {
                         <div className="flex w-full items-center justify-between">
                             <div className="flex items-center lg:space-x-10">
                                 <p className={`w-14 lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`#${index + 1}`}</p>
-                                <MemoHead uuid={list[index].uuid} />
+                                <PlayerHead uuid={list[index].uuid} />
                                 <p className={`lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((list[index].club > 500) ? 500 : list[index].club - list[index].club % 50)}`}>{`[${((list[index].club > 500) ? 500 : list[index].club - list[index].club % 50)}+] ${list[index]?.name}`}</p>
                             </div>
                             <p className={`lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${index == 0 ? "from-amber-300 to-yellow-500" : index == 1 ? "from-white to-gray-400" : index == 2 ? "from-amber-500 to-yellow-500" : "from-stone-300 to-stone-500"}`}>{`${formatNumber(list[index].point)}`}</p>
