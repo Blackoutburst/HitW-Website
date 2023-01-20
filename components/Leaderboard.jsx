@@ -8,7 +8,7 @@ const MemoLB = React.memo(LeaderboardList)
 const Leaderboard = ({ leaderboards }) => {
     const [lb, setLb] = useState({lb: leaderboards.hypixelwins, name: "Hypixel Wins", color: 'text-yellow-500'})
     const [modal, setModal] = useState(false)
-    const [scrollY, setScrollY] = useState(0)
+    const [headerHeight, setHeaderHeight] = useState(0)
 
     const escFunction = useCallback((event) => {
         if (event.key === "Escape") {
@@ -18,16 +18,12 @@ const Leaderboard = ({ leaderboards }) => {
     
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const handleScroll = () => {
-                setScrollY(window.pageYOffset)
-            }
-            
-            handleScroll()
-            window.addEventListener("scroll", handleScroll)
+            const style = window.getComputedStyle(document.getElementById("header"), null)
+            const style2 = window.getComputedStyle(document.getElementById("header2"), null)
+            setHeaderHeight(Number(style.getPropertyValue("height").replace("px", '')) + Number(style2.getPropertyValue("height").replace("px", '')))
             
             document.addEventListener("keydown", escFunction, false);
             return () => {
-                window.removeEventListener("scroll", handleScroll)
                 document.removeEventListener("keydown", escFunction, false);
             }
         }
@@ -130,9 +126,10 @@ const Leaderboard = ({ leaderboards }) => {
                     </div>
                 </>
             }
-            <div className='h-24'>
+            <div id="header" className='h-24'>
                 <div 
-                    className={`cursor-pointer backdrop-blur-sm z-40 fixed flex justify-center items-center flex-col w-full bg-[#202020aa] duration-200 border-[#404040] h-16 lg:h-20 ${scrollY !== 0 && 'border-b-2 shadow-lg'}`}
+                    id="header2"
+                    className='cursor-pointer backdrop-blur-sm z-40 fixed flex justify-center items-center flex-col w-full bg-[#202020aa] duration-200 border-[#404040] h-16 lg:h-20'
                     onClick={() => setModal(true)}
                 >
                     <p className={`duration-200 text-xl lg:text-3xl ${lb.color}`}>{lb.name}</p>
@@ -140,7 +137,7 @@ const Leaderboard = ({ leaderboards }) => {
                         (Click to change)</p>
                 </div>
             </div>
-            <MemoLB lb={lb} />
+            <MemoLB lb={lb} headerHeight={headerHeight} />
         </>
     )
 }
