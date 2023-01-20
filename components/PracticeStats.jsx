@@ -34,7 +34,7 @@ const PracticeStats = ({user}) => {
     ]
 
     return (
-        <div className="flex flex-col w-fit space-y-3 w-72">
+        <div className="flex flex-col space-y-3 w-72">
             <p className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-green-400 text-center'>Practice</p>
             {data.map((data, index) => (
                 <div key={`ps-${index}`} className="flex justify-between">

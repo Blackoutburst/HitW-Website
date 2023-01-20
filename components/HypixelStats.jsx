@@ -38,7 +38,7 @@ const HypixelStats = ({user}) => {
     ]
 
     return (
-        <div className="flex flex-col w-fit space-y-3 w-72">
+        <div className="flex flex-col space-y-3 w-72">
             <p className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 text-center mb-2'>Hypixel</p>
             {data.map((data, index) => (
                 <div key={`hps-${index}`} className="flex justify-between">
