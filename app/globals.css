@@ -43,8 +43,17 @@
     border-radius: 100px;
 }
 
+.navbar-background {
+    background-image: url("../public/images/navbar.png");
+    background-repeat: repeat;
+}
+
 .scrollbar {
     @apply container
+}
+
+.navbar {
+    @apply navbar-background
 }
 
 .navbar-link {

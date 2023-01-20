@@ -35,6 +35,7 @@ async function getUser(uuid) {
         const data = await fetch(`${process.env.HOST}user?token=${process.env.TOKEN}&uuid=${uuid}`)
         user = await data.json()
     } catch {}
+    await new Promise(r => setTimeout(r, 2000));
   
     return user
 }
