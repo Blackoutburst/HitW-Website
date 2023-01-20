@@ -19,6 +19,34 @@
     }
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+.container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #4A4A4A;
+    border-radius: 100px;
+}
+
+.scrollbar {
+    @apply container
+}
+
 .navbar-link {
     @apply flex items-center duration-200 h-full text-base lg:text-xl h-20 text-white lg:hover:text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500
 }

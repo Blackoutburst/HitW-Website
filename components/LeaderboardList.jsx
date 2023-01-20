@@ -60,7 +60,7 @@ const LeaderboardList = ({ lb, headerHeight }) => {
     return (
         <div id="list" className="flex flex-col flex-wrap max-w-screen lg:mx-20">
             <List
-                className="rounded-lg border-[#606060] border mb-20"
+                className="rounded-lg border-[#606060] border mb-20 scrollbar-hide"
                 width={listWidth}
                 height={windowSize.height - headerHeight - 20}
                 rowHeight={rowHeight}
