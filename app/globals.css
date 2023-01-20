@@ -16,8 +16,6 @@
 @layer base {
     html {
         @apply font-coda;
-        background: url("../public/images/background.png") no-repeat center fixed;     
-        background-size: cover;
     }
 }
 
@@ -48,6 +46,15 @@
 .navbar-background {
     background-image: url("../public/images/navbar.png");
     background-repeat: repeat;
+}
+
+.background-full {
+    background: url("../public/images/background.png") no-repeat center fixed;     
+    background-size: cover;
+}
+
+.background {
+    @apply background-full
 }
 
 .scrollbar {

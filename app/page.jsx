@@ -1,6 +1,11 @@
 export default function Home() {
     return (
-        <div/>
+        <>
+        <div className="background fixed top-0 left-0 w-full h-full"></div>
+        <div className="fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-full">
+            <p className="text-center text-white text-2xl">A very empty page...</p>
+        </div>
+        </>
     )
 }
     

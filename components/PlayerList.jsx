@@ -9,6 +9,8 @@ const PlayerList = ({ users }) => {
     const [filter, setFilter] = useState('')
     const [scrollY, setScrollY] = useState(0)
 
+    const list = users?.filter(user => user.name.toUpperCase().includes(filter.toUpperCase()) && user.uuid !== 'unknown')
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const handleScroll = () => {
@@ -37,7 +39,7 @@ const PlayerList = ({ users }) => {
                 </div>
             </div>
             <div className="flex flex-row flex-wrap max-w-screen justify-evenly gap-5 mx-5 lg:gap-10 lg:mx-20 mb-20">
-                {users?.filter(user => user.name.includes(filter) && user.uuid !== 'unknown').map(user => (
+                {list.map(user => (
                     <Link key={user.uuid} prefetch={false} href={`/players/${user.uuid}`}>
                         <div className="data-button">
                             <p className={`text-base lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
