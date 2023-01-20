@@ -17,6 +17,7 @@ const PlayerHead = ({ uuid }) => {
                     placeholder="/images/missing_head.png"
                     onError={() => setError(true)}
                     alt="Player head"
+                    loading="lazy"
                 />
             </div>
         </div>
