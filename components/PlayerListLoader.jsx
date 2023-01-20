@@ -1,7 +1,7 @@
 import PlayerList from "./PlayerList"
 
-const PlayerListLoader = async () => {
-    const users = await getUsers()
+const PlayerListLoader = () => {
+    const users = getUsers()
 
     return (
         <PlayerList users={users} />
