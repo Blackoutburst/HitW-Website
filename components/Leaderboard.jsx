@@ -6,7 +6,6 @@ import LeaderboardList from "./LeaderboardList"
 const MemoLB = React.memo(LeaderboardList)
 
 const Leaderboard = ({ leaderboards }) => {
-
     const [lb, setLb] = useState({lb: leaderboards.hypixelwins, name: "Hypixel Wins", color: 'text-yellow-500'})
     const [modal, setModal] = useState(false)
     const [scrollY, setScrollY] = useState(0)

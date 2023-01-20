@@ -27,6 +27,10 @@
     @apply cursor-pointer lg:hover:scale-105 duration-200 bg-[#404040] p-3 lg:p-4 rounded-lg shadow-lg border border-[#606060]
 }
 
+.data-button-ske {
+    @apply bg-gray-500 p-3 lg:p-4 rounded-lg animate-pulse
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

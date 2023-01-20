@@ -1,22 +1,13 @@
-import Leaderboard from "@/components/Leaderboard"
+import LeaderboardLoader from "@/components/LeaderboardLoader"
+import { Suspense } from "react"
+import Loading from "./loading"
 
 export default async function Player() {
-    const leaderboards = await getLeaderboards()
-
     return (
-        <Leaderboard leaderboards={leaderboards} />
+        <Suspense fallback={<Loading />} >
+            <LeaderboardLoader />
+        </Suspense>
     )
-}
-
-async function getLeaderboards() {
-    let lbs
-    
-    try {
-        const data = await fetch(`${process.env.HOST}leaderboards?token=${process.env.TOKEN}`)
-        lbs = await data.json()
-    } catch {}
-  
-    return lbs
 }
 
 // async function downloadFile (url, file) {

@@ -1,20 +1,12 @@
-import PlayerList from "@/components/PlayerList"
+import PlayerListLoader from "@/components/PlayerListLoader"
+import { Suspense } from "react"
+import Loading from "./loading"
 
 export default async function Player() {
-    const users = await getUsers()
 
     return (
-        <PlayerList users={users} />
+        <Suspense fallback={<Loading />} >
+            <PlayerListLoader />
+        </Suspense>
     )
-}
-
-async function getUsers() {
-    let users
-    
-    try {
-        const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
-        users = await data.json()
-    } catch {}
-  
-    return users?.users
 }
