@@ -1,7 +1,7 @@
 import PlayerList from "./PlayerList"
 
-const PlayerListLoader = () => {
-    const users = getUsers()
+const PlayerListLoader = async () => {
+    const users = await getUsers()
 
     return (
         <PlayerList users={users} />
@@ -10,12 +10,12 @@ const PlayerListLoader = () => {
 
 export default PlayerListLoader
 
-function getUsers() {
+async function getUsers() {
     let users
     
     try {
-        const data = fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
-        users = data.json()
+        const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
+        users = await data.json()
     } catch {}
   
     return users?.users
