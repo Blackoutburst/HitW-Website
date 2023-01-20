@@ -40,11 +40,11 @@ const PlayerList = ({ users }) => {
             </div>
             <div className="flex flex-row flex-wrap max-w-screen justify-evenly gap-5 mx-5 lg:gap-10 lg:mx-20 mb-20">
                 {list.map(user => (
-                    <Link key={user.uuid} prefetch={false} href={`/players/${user.uuid}`}>
+                    <a key={user.uuid} href={`/players/${user.uuid}`}>
                         <div className="data-button">
                             <p className={`text-base lg:text-xl text-transparent bg-clip-text bg-gradient-to-r ${colorFromClub((user.club > 500) ? 500 : user.club - user.club % 50)}`}>{`[${((user.club > 500) ? 500 : user.club - user.club % 50)}+] ${user?.name}`}</p>
                         </div>
-                    </Link>
+                    </a>
                 ))}
             </div>
         </>
