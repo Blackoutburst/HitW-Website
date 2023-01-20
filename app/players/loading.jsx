@@ -26,7 +26,7 @@ export default function Loading() {
         <div>
             <div className="h-32 lg:h-40">
                 <div className={`flex justify-center items-center flex-col w-full h-24 lg:h-32`}>
-                    <div className="blur-none outline-none text-transparent lg:text-xl w-[90%] lg:w-2/3 bg-gray-500 rounded-lg p-4 animate-pulse">w</div>
+                    <div className="blur-none outline-none text-transparent lg:text-xl w-[90%] lg:w-2/3 bg-neutral-600 rounded-lg p-4 animate-pulse">w</div>
                 </div>
             </div>
             <div className="flex flex-row flex-wrap max-w-screen justify-evenly gap-5 mx-5 lg:gap-10 lg:mx-20 mb-20">

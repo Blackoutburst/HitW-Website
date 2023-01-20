@@ -74,7 +74,7 @@
 }
 
 .data-button-ske {
-    @apply bg-gray-500 p-3 lg:p-4 rounded-lg animate-pulse
+    @apply bg-neutral-600 p-3 lg:p-4 rounded-lg animate-pulse
 }
 
 @tailwind base;
