@@ -1,5 +1,6 @@
 import { AnalyticsWrapper } from '@/components/Analytics'
 import Navbar from '@/components/Navbar'
+import React from 'react'
 import './globals.css'
 
 export default function RootLayout({ children }) {
