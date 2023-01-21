@@ -28,26 +28,26 @@ export default async function User({params}) {
     )
 }
 
-// export async function getStaticPaths() {
+export async function getStaticPaths() {
 
-//     let users
+    let users
     
-//     try {
-//         const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
-//         users = await data.json()
-//     } catch {}
+    try {
+        const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
+        users = await data.json()
+    } catch {}
 
-//     const paths = []
+    const paths = []
 
-//     for (let i = 0; i < 1000; i++) {
-//         paths.push({ params: { uuid: users?.users[i].uuid } })
-//     }
+    for (let i = 0; i < 1000; i++) {
+        paths.push({ params: { uuid: users?.users[i].uuid } })
+    }
 
-//     return {
-//         paths,
-//         fallback: true,
-//     }
-// }
+    return {
+        paths,
+        fallback: true,
+    }
+}
 
 async function getUser(uuid) {
     let user
