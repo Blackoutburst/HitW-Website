@@ -37,7 +37,11 @@ export async function getStaticPaths() {
         users = await data.json()
     } catch {}
 
-    const paths = users?.users.map(user => ({ params: { uuid: user.uuid } }))
+    const paths = []
+
+    for (let i = 0; i < 1000; i++) {
+        paths.push({ params: { uuid: users?.users[i].uuid } })
+    }
 
     return {
         paths,
