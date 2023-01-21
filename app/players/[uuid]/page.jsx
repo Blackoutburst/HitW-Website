@@ -28,6 +28,23 @@ export default async function User({params}) {
     )
 }
 
+export async function getStaticPaths() {
+
+    let users
+    
+    try {
+        const data = await fetch(`${process.env.HOST}users?token=${process.env.TOKEN}`)
+        users = await data.json()
+    } catch {}
+
+    const paths = users?.users.map(user => ({ params: { uuid: user.uuid } }))
+
+    return {
+        paths,
+        fallback: false,
+    }
+}
+
 async function getUser(uuid) {
     let user
     
