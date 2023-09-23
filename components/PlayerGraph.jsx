@@ -45,11 +45,11 @@ const PlayerGraph = ({ player }) => {
 
     const data = gameIndices.map((name, index) => ({
         name,
-        Qualification: player.qualification_history[index] || null,
-        Finals: player.finals_history[index] || null,
-        Lobby: player.lobby_history[index] || null,
-        'Wide Qualification': player.wide_qualification_history[index] || null,
-        'Wide Finals': player.wide_finals_history[index] || null
+        Qualification: player.qualification_history[maxGames - index] || null,
+        Finals: player.finals_history[maxGames - index] || null,
+        Lobby: player.lobby_history[maxGames - index] || null,
+        'Wide Qualification': player.wide_qualification_history[maxGames - index] || null,
+        'Wide Finals': player.wide_finals_history[maxGames - index] || null
     }))
 
     const minMaxQualification = findMinMaxScores(data, 'Qualification')
